@@ -37,13 +37,9 @@ app.set("trust proxy", 1);
 // Allows frontend to communicate with the backend from different origins
 app.use(
   cors({
-    origin: [
-      config.CROSS_ORIGIN ? config.CROSS_ORIGIN.replace(/\/$/, "") : "",
-      "https://fullstackfiver-frontend.vercel.app",
-      "http://localhost:5173"
-    ].filter(Boolean),
+    origin: config.CROSS_ORIGIN ? config.CROSS_ORIGIN.replace(/\/$/, "") : "http://localhost:5173",
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
-    credentials: true, // Allow cookies to be sent with requests
+    credentials: true,
   })
 );
 
