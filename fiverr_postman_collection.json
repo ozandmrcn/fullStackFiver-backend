@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "fiverr-clone-api",
+		"name": "Fullstack Fiverr Clone API",
+		"description": "Collection of all endpoints for the Fiverr Clone backend.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{ "key": "username", "value": "ozan_test", "type": "text" },
+								{ "key": "email", "value": "ozan@test.com", "type": "text" },
+								{ "key": "password", "value": "123456", "type": "text" },
+								{ "key": "country", "value": "Turkey", "type": "text" },
+								{ "key": "isSeller", "value": "true", "type": "text" },
+								{ "key": "profilePicture", "type": "file", "src": [] },
+								{ "key": "phone", "value": "05550000000", "type": "text" },
+								{ "key": "description", "value": "I am a professional developer", "type": "text" }
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/register",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "auth", "register"]
+						}
+					}
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ozan_test\",\n    \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/login",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "auth", "login"]
+						}
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/logout",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "auth", "logout"]
+						}
+					}
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/profile",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "auth", "profile"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Gigs",
+			"item": [
+				{
+					"name": "Get All Gigs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/gigs?category=design&min=10&max=500&search=logo",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "gigs"],
+							"query": [
+								{ "key": "category", "value": "design" },
+								{ "key": "min", "value": "10" },
+								{ "key": "max", "value": "500" },
+								{ "key": "search", "value": "logo" }
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Single Gig",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/gigs/GIG_ID_HERE",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "gigs", "GIG_ID_HERE"]
+						}
+					}
+				},
+				{
+					"name": "Create Gig",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{ "key": "title", "value": "I will design a unique logo for you", "type": "text" },
+								{ "key": "description", "value": "This service includes 3 concepts and high quality files.", "type": "text" },
+								{ "key": "category", "value": "design", "type": "text" },
+								{ "key": "packageTitle", "value": "Basic Logo Package", "type": "text" },
+								{ "key": "packageDescription", "value": "One logo design with JPG and PNG formats.", "type": "text" },
+								{ "key": "packagePrice", "value": "50", "type": "text" },
+								{ "key": "packageFeatures", "value": "Logo Design,High Quality,Source File", "type": "text" },
+								{ "key": "packageDuration", "value": "3", "type": "text" },
+								{ "key": "packageRevisions", "value": "2", "type": "text" },
+								{ "key": "coverImage", "type": "file", "src": [] },
+								{ "key": "images", "type": "file", "src": [] }
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/gigs",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "gigs"]
+						}
+					}
+				},
+				{
+					"name": "Delete Gig",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/gigs/GIG_ID_HERE",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "gigs", "GIG_ID_HERE"]
+						}
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [""]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [""]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
