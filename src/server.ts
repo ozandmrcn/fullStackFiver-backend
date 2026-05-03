@@ -27,6 +27,7 @@ mongoose
  * INITIALIZE EXPRESS APP
  */
 const app = express();
+app.set("trust proxy", 1);
 
 /**
  * MIDDLEWARE CONFIGURATION
