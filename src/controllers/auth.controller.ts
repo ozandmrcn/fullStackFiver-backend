@@ -70,8 +70,8 @@ const login = c(async (req: LoginReq, res: Response, next: NextFunction): Promis
   res
     .cookie("token", token, {
       httpOnly: true, // Prevents JavaScript from accessing the cookie
-      secure: isProduction ? true : false, // Only send cookie over HTTPS in production
-      sameSite: isProduction ? "none" : "lax", // Must be 'none' for cross-domain cookies
+      secure: true, // Always true for Cloud Run HTTPS
+      sameSite: "none", // Always none for cross-domain Vercel frontend
       expires: new Date(Date.now() + 14 * 24 * 3600 * 1000), // Set cookie expiry (14 days)
     })
     .json({ message: "Login successful", user });
@@ -84,8 +84,8 @@ const login = c(async (req: LoginReq, res: Response, next: NextFunction): Promis
 const logout = c(async (req: Request, res: Response): Promise<void> => {
   res.clearCookie("token", {
     httpOnly: true,
-    secure: isProduction ? true : false,
-    sameSite: isProduction ? "none" : "lax",
+    secure: true,
+    sameSite: "none",
   }).status(200).json({
     message: "Successfully logged out",
   });
