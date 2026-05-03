@@ -37,7 +37,7 @@ app.set("trust proxy", 1);
 // Allows frontend to communicate with the backend from different origins
 app.use(
   cors({
-    origin: config.CROSS_ORIGIN,
+    origin: config.CROSS_ORIGIN ? config.CROSS_ORIGIN.replace(/\/$/, "") : "*",
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     credentials: true, // Allow cookies to be sent with requests
   })
