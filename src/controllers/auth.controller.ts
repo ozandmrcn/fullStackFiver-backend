@@ -71,7 +71,7 @@ const login = c(async (req: LoginReq, res: Response, next: NextFunction): Promis
     .cookie("token", token, {
       httpOnly: true, // Prevents JavaScript from accessing the cookie
       secure: isProduction ? true : false, // Only send cookie over HTTPS in production
-      sameSite: "lax", // Helps prevent CSRF attacks
+      sameSite: isProduction ? "none" : "lax", // Must be 'none' for cross-domain cookies
       expires: new Date(Date.now() + 14 * 24 * 3600 * 1000), // Set cookie expiry (14 days)
     })
     .json({ message: "Login successful", user });
@@ -82,7 +82,11 @@ const login = c(async (req: LoginReq, res: Response, next: NextFunction): Promis
  * Ends the user session by clearing the authentication cookie.
  */
 const logout = c(async (req: Request, res: Response): Promise<void> => {
-  res.clearCookie("token").status(200).json({
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: isProduction ? true : false,
+    sameSite: isProduction ? "none" : "lax",
+  }).status(200).json({
     message: "Successfully logged out",
   });
 });
