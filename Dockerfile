@@ -1,38 +1,39 @@
-# 1. Aşama: Uygulamayı derleme (Build stage)
+# Stage 1: Build the application
 FROM node:22-alpine AS builder
 
-# Çalışma dizinini ayarla
+# Set working directory
 WORKDIR /app
 
-# Bağımlılık dosyalarını kopyala
+# Copy dependency files
 COPY package*.json ./
 
-# Bağımlılıkları yükle (Sadece derleme için gerekli olanlar dahil)
+# Install dependencies
 RUN npm install
 
-# Tüm proje dosyalarını kopyala
+# Copy all project files
 COPY . .
 
-# TypeScript kodunu derle
+# Build the TypeScript code
 RUN npm run build
 
-# 2. Aşama: Çalışma ortamı (Production stage)
+# Stage 2: Runtime environment
 FROM node:22-alpine
 
-# Çalışma dizinini ayarla
+# Set working directory
 WORKDIR /app
 
-# Sadece production bağımlılıklarını yüklemek için package.json kopyala
+# Copy package.json to install production dependencies
 COPY package*.json ./
 
-# Sadece production bağımlılıklarını yükle (daha küçük image boyutu için)
+# Install only production dependencies
 RUN npm install --omit=dev
 
-# Derlenmiş dosyaları (dist klasörünü) builder aşamasından kopyala
+# Copy compiled files from the builder stage
 COPY --from=builder /app/dist ./dist
 
-# Uygulamanın çalışacağı portu belirt (Uygulama kodundaki port ile aynı olmalı)
+# Specify the port the app will run on
 EXPOSE 4000
 
-# Uygulamayı başlat
+# Start the application
 CMD ["npm", "start"]
+
