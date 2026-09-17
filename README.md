@@ -82,7 +82,7 @@ CLOUD_SECRET=your_api_secret
 CROSS_ORIGIN=http://localhost:5173
 ```
 
-> <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Warning.png" alt="Warning" width="25" height="25" /> **Note:** Ensure you have a Cloudinary account to handle gig and profile image uploads correctly.
+> ⚠️ **Note:** Ensure you have a Cloudinary account to handle gig and profile image uploads correctly.
 
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/E-Mail.png" alt="E-Mail" width="25" height="25" /> Contact
 
