@@ -57,7 +57,7 @@ npm run build
 npm start
 ```
 
-### ⚙️ Environment Variables (.env Setup)
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Gear.png" alt="Gear" width="25" height="25" /> Environment Variables (.env Setup)
 
 Create a `.env` file in the `api` directory and define the following variables:
 
@@ -82,9 +82,9 @@ CLOUD_SECRET=your_api_secret
 CROSS_ORIGIN=http://localhost:5173
 ```
 
-> ⚠️ **Note:** Ensure you have a Cloudinary account to handle gig and profile image uploads correctly.
+> <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Warning.png" alt="Warning" width="25" height="25" /> **Note:** Ensure you have a Cloudinary account to handle gig and profile image uploads correctly.
 
-## 📧 Contact
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/E-Mail.png" alt="E-Mail" width="25" height="25" /> Contact
 
 For any questions or feedback, feel free to contact:  
 **Ozan Demircan** – ozandmrcn47@gmail.com
